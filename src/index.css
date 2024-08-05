@@ -1,6 +1,7 @@
 :root {
   --white: #fff;
   --black: #000;
+  --nav-bg: rgba(0, 0, 0, 0.6);
 }
 
 @font-face {
@@ -81,7 +82,6 @@ a {
   color: var(--white);
 }
 
-.wrapper {
-  margin: 0 auto;
-  padding: 0 20px;
+.removeScroll {
+  overflow: hidden;
 }
