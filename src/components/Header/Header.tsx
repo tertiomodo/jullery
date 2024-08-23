@@ -3,14 +3,14 @@ import styles from "./style.module.css";
 import clsx from "clsx";
 
 export default function Header() {
-  const [burgerOpen, setBurgerOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function clickHandler() {
-    setBurgerOpen((prev) => !prev);
+    setMenuOpen((prev) => !prev);
   }
 
   useEffect(() => {
-    if (burgerOpen) {
+    if (menuOpen) {
       document.body.classList.add("removeScroll");
     } else {
       document.body.classList.remove("removeScroll");
@@ -19,30 +19,32 @@ export default function Header() {
     return function cleanup() {
       document.body.classList.remove("removeScroll");
     };
-  }, [burgerOpen]);
+  }, [menuOpen]);
 
   return (
-    <header className={clsx(styles.header, { [styles.navActive]: burgerOpen })}>
-      <img className={styles.logo} src="./header-logo.svg" alt="Logo" />
-      <ul className={styles.list}>
-        <li className={styles.item}>
-          <button>Lovely works</button>
-        </li>
-        <li className={styles.item}>
-          <button>Gallery</button>
-        </li>
-        <li className={styles.item}>
-          <button>About</button>
-        </li>
-        <li className={styles.item}>
-          <button>Contacts</button>
-        </li>
-      </ul>
-      <button onClick={clickHandler} className={styles.burger}>
-        <span className={styles.burgerLine}></span>
-        <span className={styles.burgerLine}></span>
-        <span className={styles.burgerLine}></span>
-      </button>
+    <header className={clsx(styles.header, { [styles.navActive]: menuOpen })}>
+      <div className={styles.wrapper}>
+        <img onClick={() => setMenuOpen(false)} className={styles.logo} src="./header-logo.svg" alt="Logo" />
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <button>Lovely works</button>
+          </li>
+          <li className={styles.item}>
+            <button>Gallery</button>
+          </li>
+          <li className={styles.item}>
+            <button>About</button>
+          </li>
+          <li className={styles.item}>
+            <button>Contacts</button>
+          </li>
+        </ul>
+        <button onClick={clickHandler} className={styles.burger}>
+          <span className={styles.burgerLine}></span>
+          <span className={styles.burgerLine}></span>
+          <span className={styles.burgerLine}></span>
+        </button>
+      </div>
     </header>
   );
 }

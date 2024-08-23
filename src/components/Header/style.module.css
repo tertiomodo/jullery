@@ -2,11 +2,16 @@
   /* position: sticky;
   top: 0; */
   position: relative;
+  min-height: 70px;
+  margin-bottom: -70px;
+}
+
+.wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
-  margin-bottom: -70px;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 0 20px;
 }
 

@@ -85,3 +85,9 @@ a {
 .removeScroll {
   overflow: hidden;
 }
+
+.highlight {
+  background: linear-gradient(90deg, #66d45d 0%, #b7e359 49%, #ebba5b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
