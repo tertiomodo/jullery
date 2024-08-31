@@ -1,39 +1,41 @@
 :root {
   --white: #fff;
   --black: #000;
+  --nav-bg: rgba(0, 0, 0, 0.9);
+  --text-highlight: linear-gradient(90deg, #66d45d 0%, #b7e359 49%, #ebba5b 100%);
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./fonts/Montserrat-Regular.woff2") format("woff2");
+  src: url("./assets/fonts/Montserrat-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./fonts/Montserrat-Medium.woff2") format("woff2");
+  src: url("./assets/fonts/Montserrat-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./fonts/Montserrat-SemiBold.woff2") format("woff2");
+  src: url("./assets/fonts/Montserrat-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./fonts/Montserrat-Bold.woff2") format("woff2");
+  src: url("./assets/fonts/Montserrat-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./fonts/Montserrat-ExtraBold.woff2") format("woff2");
+  src: url("./assets/fonts/Montserrat-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
 }
@@ -81,7 +83,12 @@ a {
   color: var(--white);
 }
 
-.wrapper {
-  margin: 0 auto;
-  padding: 0 20px;
+.removeScroll {
+  overflow: hidden;
+}
+
+.highlight {
+  background: var(--text-highlight);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

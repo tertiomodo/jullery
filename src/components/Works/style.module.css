@@ -1,0 +1,37 @@
+.works {
+  min-height: 1000px;
+  padding: 100px 0 100px;
+}
+
+.wrapper {
+  padding: 0 20px;
+}
+
+.title {
+  margin-bottom: 19px;
+  font-weight: 800;
+  font-size: 32px;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    padding: 0 60px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    padding: 0 80px;
+  }
+}

@@ -1,12 +1,16 @@
-import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
+import Hero from "./components/Hero/Hero";
+import Footer from "./components/Footer/Footer";
+import Works from "./components/Works/Works";
 
 function App() {
   return (
     <>
       <Header />
-      <Main />
+      <main>
+        <Hero />
+        <Works />
+      </main>
       <Footer />
     </>
   );
