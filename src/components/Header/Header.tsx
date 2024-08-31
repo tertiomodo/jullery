@@ -26,18 +26,10 @@ export default function Header() {
       <div className={styles.wrapper}>
         <img onClick={() => setMenuOpen(false)} className={styles.logo} src="./header-logo.svg" alt="Logo" />
         <ul className={styles.list}>
-          <li className={styles.item}>
-            <button>Lovely works</button>
-          </li>
-          <li className={styles.item}>
-            <button>Gallery</button>
-          </li>
-          <li className={styles.item}>
-            <button>About</button>
-          </li>
-          <li className={styles.item}>
-            <button>Contacts</button>
-          </li>
+          <li className={styles.item}>Lovely works</li>
+          <li className={styles.item}>Gallery</li>
+          <li className={styles.item}>About</li>
+          <li className={styles.item}>Contacts</li>
         </ul>
         <button onClick={clickHandler} className={styles.burger}>
           <span className={styles.burgerLine}></span>
