@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./style.module.css";
+import clsx from "clsx";
 
 interface SliderProps {
   slides: React.ReactNode[];
@@ -7,10 +8,8 @@ interface SliderProps {
 }
 
 export default function Slider({ slides, margin = 10 }: SliderProps) {
-  const slidesTrack = useRef(null);
+  const slidesTrack = useRef<HTMLUListElement>(null);
   const buttons = useRef(null);
-  const dotsWrapper = document.querySelector("[data-dots-wrapper]");
-  const dots = document.querySelectorAll("[data-dot]");
 
   // States
   const [translatesArray, setTranslatesArray] = useState<number[]>([0]);
@@ -21,9 +20,19 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
   useEffect(() => {
     setTranslates();
     setMarginBetweenSlides();
+
+    const handleMouseUp = (e: MouseEvent) => {
+      setEndSwipe(e as unknown as React.MouseEvent);
+    };
+
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
   }, []);
 
-  function setTranslates() {
+  const setTranslates = () => {
     let translate = 0;
     const newTranslateArray = [];
 
@@ -32,30 +41,38 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
     }
 
     setTranslatesArray(newTranslateArray);
-  }
+  };
 
-  function setMarginBetweenSlides() {
-    slides.forEach((slide, index) => {
-      if (index + 1 !== slides.length && margin !== 0) {
-        slide.style = `margin-right: ${margin}%;`;
-      }
-    });
-  }
+  const setMarginBetweenSlides = () => {
+    const slideElements = slidesTrack.current?.querySelectorAll("[data-slide]");
 
-  function moveSlider() {
-    slidesTrack.style = `transform: translateX(${translatesArray[currentSlide]}%);`;
-  }
+    if (slideElements) {
+      slideElements.forEach((slide, index) => {
+        if (index + 1 !== slides.length && margin !== 0) {
+          (slide as HTMLElement).style.setProperty("margin-right", `${margin}%`);
+        }
+      });
+    }
+  };
 
-  function setActiveDot() {
+  const moveSlider = () => {
+    if (slidesTrack.current) {
+      slidesTrack.current.style.setProperty("transform", `translateX(${translatesArray[currentSlide]}%);`);
+    }
+  };
+
+  const setActiveDot = () => {
+    const dots = document.querySelectorAll("[data-dot]");
+
     dots.forEach((dot) => {
       dot.classList.remove("dotActive");
     });
 
-    const currentDot = dotsWrapper.querySelector(`[data-dot="${currentSlide}"]`);
-    currentDot.classList.add("dotActive");
-  }
+    const currentDot = document.querySelector(`[data-dot="${currentSlide}"]`);
+    currentDot?.classList.add("dotActive");
+  };
 
-  function changeCurrentSlide(action: "next" | "back") {
+  const changeCurrentSlide = (action: "next" | "back") => {
     if (action === "next") {
       setCurrentSlide((prev) => prev++);
     } else if (action === "back") {
@@ -64,19 +81,19 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
 
     moveSlider();
     setActiveDot();
-  }
+  };
 
-  function setStartSwipe(e) {
+  const setStartSwipe = (e: React.TouchEvent | React.MouseEvent) => {
     setSwipeStartedInSlider(true);
-    setStart(e.type === "touchstart" ? e.changedTouches[0].clientX : e.clientX);
-  }
+    setStart("changedTouches" in e ? e.changedTouches[0].clientX : e.clientX);
+  };
 
-  function setEndSwipe(e) {
+  const setEndSwipe = (e: React.TouchEvent | React.MouseEvent) => {
     if (swipeStartedInSlider === false) {
       return;
     }
 
-    const end = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
+    const end = "changedTouches" in e ? e.changedTouches[0].clientX : e.clientX;
 
     if (start > end && currentSlide < slides.length - 1) {
       changeCurrentSlide("next");
@@ -85,24 +102,17 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
     }
 
     setSwipeStartedInSlider(false);
-  }
+  };
 
-  function swipeHandler() {
-    slidesTrack.addEventListener("touchstart", setStartSwipe);
-    slidesTrack.addEventListener("touchend", setEndSwipe);
-    slidesTrack.addEventListener("mousedown", setStartSwipe);
-    document.addEventListener("mouseup", setEndSwipe);
-  }
-
-  function handleButtonClick(direction: "next" | "back") {
+  const handleButtonClick = (direction: "next" | "back") => {
     if (direction === "next" && currentSlide < slides.length - 1) {
       changeCurrentSlide(direction);
     } else if (direction === "back" && currentSlide > 0) {
       changeCurrentSlide(direction);
     }
-  }
+  };
 
-  function dotsHandler() {
+  const dotsHandler = () => {
     dots.forEach((dot) => {
       dot.addEventListener("click", (e) => {
         const target = e.currentTarget;
@@ -118,7 +128,7 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
         target.classList.add("dotActive");
       });
     });
-  }
+  };
 
   // setTranslates();
   // setMarginBetweenSlides();
@@ -128,21 +138,20 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
   return (
     <div className={styles.slider}>
       <div className={styles.slidesWrapper}>
-        <ul ref={slidesTrack} className={styles.slidesTrack}>
-          {/* It should come from props */}
-          <li className={styles.slide}>
-            <div className={styles.slideCard}>1</div>
-          </li>
-          <li className={styles.slide}>
-            <div className={styles.slideCard}>2</div>
-          </li>
-          <li className={styles.slide}>
-            <div className={styles.slideCard}>3</div>
-          </li>
-          <li className={styles.slide}>
-            <div className={styles.slideCard}>4</div>
-          </li>
-          {/* It should come from props */}
+        <ul
+          ref={slidesTrack}
+          onTouchStart={() => setStartSwipe}
+          onTouchEnd={() => setEndSwipe}
+          onMouseDown={() => setStartSwipe}
+          className={styles.slidesTrack}
+        >
+          {slides.map((slide, index) => {
+            return (
+              <li key={index} className={styles.slide} data-slide>
+                {slide}
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className={styles.buttons}>
@@ -153,11 +162,24 @@ export default function Slider({ slides, margin = 10 }: SliderProps) {
           Next
         </button>
       </div>
-      <div className={styles.dots} data-dots-wrapper>
-        <button className={(styles.dot, styles.dotActive)} data-dot="0"></button>
+      <div className={styles.dots}>
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            data-dot={index}
+            className={clsx(styles.dot, { [styles.dotActive]: currentSlide === index })}
+          ></button>
+          // <span
+          //   key={index}
+          //   data-dot={index}
+          //   className={`dot ${currentSlide === index ? "dotActive" : ""}`}
+          //   onClick={() => handleDotClick(index)}
+          // />
+        ))}
+        {/* <button className={(styles.dot, styles.dotActive)} data-dot="0"></button>
         <button className={styles.dot} data-dot="1"></button>
         <button className={styles.dot} data-dot="2"></button>
-        <button className={styles.dot} data-dot="3"></button>
+        <button className={styles.dot} data-dot="3"></button> */}
       </div>
     </div>
   );

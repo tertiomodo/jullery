@@ -1,5 +1,5 @@
+import Slider from "../Slider/Slider";
 import styles from "./style.module.css";
-// import Slider from "../Slider/Slider";
 
 export default function Works() {
   return (
@@ -10,7 +10,14 @@ export default function Works() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nam id, optio dolor officia rem dolorem
           sapiente commodi.
         </p>
-        {/* <Slider /> */}
+        <Slider
+          slides={[
+            <div className={styles.slideCard}>1</div>,
+            <div className={styles.slideCard}>2</div>,
+            <div className={styles.slideCard}>3</div>,
+            <div className={styles.slideCard}>4</div>,
+          ]}
+        />
       </div>
     </div>
   );
