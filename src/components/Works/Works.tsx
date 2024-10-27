@@ -1,7 +1,13 @@
 import Slider from "../Slider/Slider";
 import styles from "./style.module.css";
+import amazingEvening from "./img/amazing-evening.webp";
+import cypressForest from "./img/cypress-forest.webp";
+import runnyDay from "./img/runny-day.webp";
+import silenceOfSea from "./img/silence-of-sea.webp";
 
 export default function Works() {
+  const slidesContent = [amazingEvening, cypressForest, runnyDay, silenceOfSea];
+
   return (
     <div className={styles.works}>
       <div className={styles.wrapper}>
@@ -10,14 +16,7 @@ export default function Works() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nam id, optio dolor officia rem dolorem
           sapiente commodi.
         </p>
-        <Slider
-          slides={[
-            <div className={styles.slideCard}>1</div>,
-            <div className={styles.slideCard}>2</div>,
-            <div className={styles.slideCard}>3</div>,
-            <div className={styles.slideCard}>4</div>,
-          ]}
-        />
+        <Slider slidesContent={slidesContent} />
       </div>
     </div>
   );

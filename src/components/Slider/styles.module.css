@@ -1,0 +1,83 @@
+.sliderContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 704px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  user-select: none;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+
+.active {
+  opacity: 1;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.dots {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffffff50;
+  border: none;
+}
+
+.dot:not(:last-child) {
+  margin-right: 20px;
+}
+
+.dotActive {
+  background-color: #ffffff;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.prevButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
