@@ -2,6 +2,7 @@
   --white: #fff;
   --black: #000;
   --nav-bg: rgba(0, 0, 0, 0.9);
+  --slider-bg: rgba(0, 0, 0, 0.7);
   --text-highlight: linear-gradient(90deg, #66d45d 0%, #b7e359 49%, #ebba5b 100%);
 }
 

@@ -8,6 +8,7 @@
 
 .slider {
   position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1024px;
   height: 100%;
@@ -60,24 +61,5 @@
 }
 
 .dotActive {
-  background-color: #ffffff;
-}
-
-.navButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 8px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-
-.prevButton {
-  left: 0;
-}
-
-.nextButton {
-  right: 0;
+  background-color: var(--white);
 }

@@ -1,0 +1,31 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 966px;
+}
+
+.wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--slider-bg);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+
+.active {
+  opacity: 1;
+}

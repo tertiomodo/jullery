@@ -1,6 +1,6 @@
 import styles from "./style.module.css";
 
-export default function Hero() {
+const Hero = () => {
   return (
     <div className={styles.hero}>
       <div className={styles.wrapper}>
@@ -16,4 +16,6 @@ export default function Hero() {
       </div>
     </div>
   );
-}
+};
+
+export default Hero;
