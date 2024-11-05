@@ -33,7 +33,7 @@
   width: 100%;
   height: 100vh;
   padding-top: 163px;
-  background-color: var(--nav-bg);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 0 0 50px 50px;
   transform: translateY(-100%);
   transition: transform 300ms ease-in-out;
