@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import clsx from "clsx";
 
-export default function Header() {
+const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   function clickHandler() {
@@ -39,4 +39,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

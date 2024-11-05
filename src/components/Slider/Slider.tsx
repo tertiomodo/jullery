@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
+  activeIndex: number;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
   slidesContent: string[];
 }
 
-const Slider: React.FC<Props> = ({ slidesContent }) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent }) => {
   const [startX, setStartX] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
@@ -82,12 +83,6 @@ const Slider: React.FC<Props> = ({ slidesContent }) => {
             />
           ))}
         </div>
-        <button className={`${styles.navButton} ${styles.prevButton}`} onClick={prevSlide}>
-          ←
-        </button>
-        <button className={`${styles.navButton} ${styles.nextButton}`} onClick={nextSlide}>
-          →
-        </button>
       </div>
     </div>
   );

@@ -1,11 +1,15 @@
-import Slider from "../Slider/Slider";
+import { useState } from "react";
 import styles from "./style.module.css";
+import Slider from "../Slider/Slider";
+import SliderBg from "../SliderBg/SliderBg";
+
 import amazingEvening from "./img/amazing-evening.webp";
 import cypressForest from "./img/cypress-forest.webp";
 import runnyDay from "./img/runny-day.webp";
 import silenceOfSea from "./img/silence-of-sea.webp";
 
-export default function Works() {
+const Works = () => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const slidesContent = [amazingEvening, cypressForest, runnyDay, silenceOfSea];
 
   return (
@@ -16,8 +20,12 @@ export default function Works() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nam id, optio dolor officia rem dolorem
           sapiente commodi.
         </p>
-        <Slider slidesContent={slidesContent} />
+        <SliderBg activeIndex={activeIndex} slidesContent={slidesContent} additionStyles={styles.sliderBg}>
+          <Slider activeIndex={activeIndex} setActiveIndex={setActiveIndex} slidesContent={slidesContent} />
+        </SliderBg>
       </div>
     </div>
   );
-}
+};
+
+export default Works;
