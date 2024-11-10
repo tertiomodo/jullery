@@ -15,6 +15,7 @@
   user-select: none;
   overflow: hidden;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .slide {
@@ -45,7 +46,6 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  cursor: pointer;
 }
 
 .dot {
