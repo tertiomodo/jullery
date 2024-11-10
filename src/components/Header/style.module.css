@@ -1,9 +1,7 @@
 .header {
-  /* position: sticky;
-  top: 0; */
   position: relative;
   z-index: 2;
-  min-height: 70px;
+  height: 70px;
   margin-bottom: -70px;
 }
 
@@ -12,6 +10,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 1440px;
+  height: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -19,8 +18,9 @@
 .logo {
   position: relative;
   z-index: 1;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
 
 .list {
@@ -96,6 +96,10 @@
 @media (min-width: 1024px) {
   .wrapper {
     padding: 0 60px;
+  }
+
+  .logo {
+    cursor: auto;
   }
 
   .list {

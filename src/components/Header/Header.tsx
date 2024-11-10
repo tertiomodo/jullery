@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header className={clsx(styles.header, { [styles.navActive]: menuOpen })}>
       <div className={styles.wrapper}>
-        <img onClick={() => setMenuOpen(false)} className={styles.logo} src="./header-logo.svg" alt="Logo" />
+        <img onClick={() => setMenuOpen(false)} className={styles.logo} src="./logo.svg" alt="Logo" />
         <ul className={styles.list}>
           <li className={styles.item}>Lovely works</li>
           <li className={styles.item}>Gallery</li>

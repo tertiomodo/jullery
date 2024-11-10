@@ -10,7 +10,7 @@ import silenceOfSea from "./img/silence-of-sea.webp";
 
 const Works = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const slidesContent = [amazingEvening, cypressForest, runnyDay, silenceOfSea];
+  const slidesContent = [silenceOfSea, runnyDay, cypressForest, amazingEvening];
 
   return (
     <div className={styles.works}>
