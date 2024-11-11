@@ -3,7 +3,9 @@ import styles from "./style.module.css";
 const Hero = () => {
   return (
     <div className={styles.hero}>
-      <div className={styles.background}></div>
+      <div className={styles.backgroundWrapper}>
+        <div className={styles.background}></div>
+      </div>
       <div className={styles.wrapper}>
         <div className={styles.text}>
           <h1 className={styles.title}>

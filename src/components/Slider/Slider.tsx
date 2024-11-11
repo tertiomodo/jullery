@@ -5,9 +5,10 @@ interface Props {
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
   slidesContent: string[];
+  additionStyles?: string;
 }
 
-const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent }) => {
+const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent, additionStyles }) => {
   const [startX, setStartX] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
@@ -60,31 +61,31 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent })
   };
 
   return (
-    <div className={styles.sliderContainer}>
-      <div
-        className={styles.slider}
-        onTouchStart={touchStart}
-        onTouchEnd={touchEnd}
-        onMouseDown={mouseDown}
-        onMouseUp={mouseUp}
-        onMouseLeave={mouseUp}
-      >
-        {slidesContent.map((slide, index) => (
-          <div key={index} className={`${styles.slide} ${index === activeIndex ? styles.active : ""}`}>
-            <img src={slide} alt={`Slide ${index + 1}`} className={styles.slideImage} />
-          </div>
-        ))}
-        <div className={styles.dots}>
-          {slidesContent.map((_, index) => (
-            <button
-              key={index}
-              className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""}`}
-              onClick={() => setActiveIndex(index)}
-            />
-          ))}
+    // <div className={styles.sliderContainer}>
+    <div
+      className={`${styles.slider} ${additionStyles}`}
+      onTouchStart={touchStart}
+      onTouchEnd={touchEnd}
+      onMouseDown={mouseDown}
+      onMouseUp={mouseUp}
+      onMouseLeave={mouseUp}
+    >
+      {slidesContent.map((slide, index) => (
+        <div key={index} className={`${styles.slide} ${index === activeIndex ? styles.active : ""}`}>
+          <img src={slide} alt={`Slide ${index + 1}`} className={styles.slideImage} />
         </div>
+      ))}
+      <div className={styles.dots}>
+        {slidesContent.map((_, index) => (
+          <button
+            key={index}
+            className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""}`}
+            onClick={() => setActiveIndex(index)}
+          />
+        ))}
       </div>
     </div>
+    // </div>
   );
 };
 
