@@ -4,20 +4,21 @@ import styles from "./styles.module.css";
 interface Props {
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-  slidesContent: string[];
+  images: string[];
+  caption?: { text: string; position: string }[];
   additionStyles?: string;
 }
 
-const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent, additionStyles }) => {
+const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, images, caption, additionStyles }) => {
   const [startX, setStartX] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
   const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % slidesContent.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + slidesContent.length) % slidesContent.length);
+    setActiveIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const moveSlider = (clientX: number) => {
@@ -61,7 +62,6 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent, a
   };
 
   return (
-    // <div className={styles.sliderContainer}>
     <div
       className={`${styles.slider} ${additionStyles}`}
       onTouchStart={touchStart}
@@ -70,13 +70,14 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent, a
       onMouseUp={mouseUp}
       onMouseLeave={mouseUp}
     >
-      {slidesContent.map((slide, index) => (
+      {images.map((image, index) => (
         <div key={index} className={`${styles.slide} ${index === activeIndex ? styles.active : ""}`}>
-          <img src={slide} alt={`Slide ${index + 1}`} className={styles.slideImage} />
+          <div className={image}></div>
+          {caption && <p className={`${styles.caption} ${caption[index].position}`}>{caption[index].text}</p>}
         </div>
       ))}
       <div className={styles.dots}>
-        {slidesContent.map((_, index) => (
+        {images.map((_, index) => (
           <button
             key={index}
             className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""}`}
@@ -85,7 +86,6 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, slidesContent, a
         ))}
       </div>
     </div>
-    // </div>
   );
 };
 
