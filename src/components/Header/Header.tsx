@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./style.module.css";
-import clsx from "clsx";
 
-const Header = () => {
+const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   function clickHandler() {
@@ -16,15 +15,20 @@ const Header = () => {
       document.body.classList.remove("removeScroll");
     }
 
-    return function cleanup() {
+    return () => {
       document.body.classList.remove("removeScroll");
     };
   }, [menuOpen]);
 
   return (
-    <header className={clsx(styles.header, { [styles.navActive]: menuOpen })}>
+    <header className={`${styles.header} ${menuOpen ? styles.navActive : ""}`}>
       <div className={styles.wrapper}>
-        <img onClick={() => setMenuOpen(false)} className={styles.logo} src="./logo.svg" alt="Logo" />
+        <img
+          onClick={() => setMenuOpen(false)}
+          className={styles.logo}
+          src="./logo.svg"
+          alt="Logo"
+        />
         <ul className={styles.list}>
           <li className={styles.item}>Lovely works</li>
           <li className={styles.item}>Gallery</li>

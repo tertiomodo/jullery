@@ -9,7 +9,13 @@ interface Props {
   additionStyles?: string;
 }
 
-const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, images, caption, additionStyles }) => {
+const Slider: React.FC<Props> = ({
+  activeIndex,
+  setActiveIndex,
+  images,
+  caption,
+  additionStyles,
+}) => {
   const [startX, setStartX] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
@@ -18,7 +24,9 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, images, caption,
   };
 
   const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const moveSlider = (clientX: number) => {
@@ -50,7 +58,7 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, images, caption,
   };
 
   const touchEnd = (e: React.TouchEvent) => {
-    handleDragEnd(e.touches[0].clientX);
+    handleDragEnd(e.changedTouches[0].clientX);
   };
 
   const mouseDown = (e: React.MouseEvent) => {
@@ -71,16 +79,27 @@ const Slider: React.FC<Props> = ({ activeIndex, setActiveIndex, images, caption,
       onMouseLeave={mouseUp}
     >
       {images.map((image, index) => (
-        <div key={index} className={`${styles.slide} ${index === activeIndex ? styles.active : ""}`}>
+        <div
+          key={index}
+          className={`${styles.slide} ${
+            index === activeIndex ? styles.active : ""
+          }`}
+        >
           <div className={image}></div>
-          {caption && <p className={`${styles.caption} ${caption[index].position}`}>{caption[index].text}</p>}
+          {caption && (
+            <p className={`${styles.caption} ${caption[index].position}`}>
+              {caption[index].text}
+            </p>
+          )}
         </div>
       ))}
       <div className={styles.dots}>
         {images.map((_, index) => (
           <button
             key={index}
-            className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""}`}
+            className={`${styles.dot} ${
+              index === activeIndex ? styles.dotActive : ""
+            }`}
             onClick={() => setActiveIndex(index)}
           />
         ))}
