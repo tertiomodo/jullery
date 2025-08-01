@@ -8,7 +8,7 @@ import runnyDay from "./img/runny-day.webp";
 import cypressForest from "./img/cypress-forest.webp";
 import amazingEvening from "./img/amazing-evening.webp";
 
-const Works = () => {
+const Works: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const slidesContent = [silenceOfSea, runnyDay, cypressForest, amazingEvening];
@@ -20,13 +20,12 @@ const Works = () => {
     { text: "Amazing evening", position: styles.caption },
   ];
 
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
     window.addEventListener("resize", handleResize);
-
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
@@ -37,8 +36,9 @@ const Works = () => {
       <div className={styles.text}>
         <h2 className={styles.title}>My lovely works</h2>
         <p className={styles.subtitle}>
-          Here are moments that hold the greatest value for&nbsp;me. Each image is&nbsp;a&nbsp;small part
-          of&nbsp;my&nbsp;life, captured in&nbsp;a&nbsp;frame.
+          Here are moments that hold the greatest value for&nbsp;me. Each image
+          is&nbsp;a&nbsp;small part of&nbsp;my&nbsp;life, captured
+          in&nbsp;a&nbsp;frame.
         </p>
       </div>
 
@@ -51,7 +51,11 @@ const Works = () => {
           additionStyles={styles.slider}
         />
       ) : (
-        <SliderBg activeIndex={activeIndex} slidesContent={slidesContent} additionStyles={styles.sliderBg}>
+        <SliderBg
+          activeIndex={activeIndex}
+          slidesContent={slidesContent}
+          additionStyles={styles.sliderBg}
+        >
           <Slider
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}

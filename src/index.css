@@ -1,7 +1,12 @@
 :root {
   --white: #fff;
   --black: #000;
-  --text-highlight: linear-gradient(90deg, #66d45d 0%, #b7e359 49%, #ebba5b 100%);
+  --text-highlight: linear-gradient(
+    90deg,
+    #66d45d 0%,
+    #b7e359 49%,
+    #ebba5b 100%
+  );
 }
 
 @font-face {
@@ -50,6 +55,7 @@ body {
   font-family: "Montserrat", sans-serif;
   background-color: var(--black);
   color: var(--white);
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1,

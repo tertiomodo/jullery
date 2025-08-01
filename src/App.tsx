@@ -1,19 +1,21 @@
 import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
+import Welcome from "./components/Welcome/Welcome";
 import Footer from "./components/Footer/Footer";
 import Works from "./components/Works/Works";
+import About from "./components/About/About";
 
-function App() {
+const App = () => {
   return (
     <>
       <Header />
       <main>
-        <Hero />
+        <Welcome />
         <Works />
+        <About />
       </main>
       <Footer />
     </>
   );
-}
+};
 
 export default App;

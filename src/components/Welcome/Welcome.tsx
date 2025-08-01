@@ -1,8 +1,8 @@
 import styles from "./style.module.css";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
-    <div className={styles.hero}>
+    <div className={styles.welcome}>
       <div className={styles.backgroundWrapper}>
         <div className={styles.background}></div>
       </div>
@@ -12,7 +12,8 @@ const Hero = () => {
             It’s my photo <span className="highlight">gallery</span>
           </h1>
           <p className={styles.subtitle}>
-            “Photography is a way to see the beauty in the ordinary things and capture it forever.”
+            “Photography is a way to see the beauty in the ordinary things and
+            capture it forever.”
           </p>
         </div>
       </div>
