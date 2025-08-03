@@ -1,10 +1,10 @@
-import Header from "./components/Header/Header";
-import Welcome from "./components/Welcome/Welcome";
-import Footer from "./components/Footer/Footer";
-import Works from "./components/Works/Works";
-import About from "./components/About/About";
+import Header from "@modules/Header/Header";
+import Welcome from "@modules/Welcome/Welcome";
+import Footer from "@modules/Footer/Footer";
+import Works from "@modules/Works/Works";
+import About from "@modules/About/About";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Header />
