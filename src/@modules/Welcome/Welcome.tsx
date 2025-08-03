@@ -2,7 +2,7 @@ import styles from "./style.module.css";
 
 const Hero: React.FC = () => {
   return (
-    <div className={styles.welcome}>
+    <section className={styles.welcome}>
       <div className={styles.backgroundWrapper}>
         <div className={styles.background}></div>
       </div>
@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

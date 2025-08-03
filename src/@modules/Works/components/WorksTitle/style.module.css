@@ -1,0 +1,37 @@
+.worksTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  min-height: 170rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 19rem;
+  font-size: 32rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  max-width: 360rem;
+  text-align: center;
+  font-size: 20rem;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 64rem;
+  }
+
+  .subtitle {
+    max-width: 700rem;
+    font-size: 24rem;
+  }
+}

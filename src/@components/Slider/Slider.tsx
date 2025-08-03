@@ -4,17 +4,23 @@ import styles from "./styles.module.css";
 interface Props {
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-  images: string[];
-  caption?: { text: string; position: string }[];
+  images: {
+    id: number;
+    image: string;
+    caption?: string;
+  }[];
   additionStyles?: string;
+  additionDotsStyles?: string;
+  additionCaptionStyles?: string;
 }
 
 const Slider: React.FC<Props> = ({
   activeIndex,
   setActiveIndex,
   images,
-  caption,
   additionStyles,
+  additionDotsStyles,
+  additionCaptionStyles,
 }) => {
   const [startX, setStartX] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -78,29 +84,29 @@ const Slider: React.FC<Props> = ({
       onMouseUp={mouseUp}
       onMouseLeave={mouseUp}
     >
-      {images.map((image, index) => (
+      {images.map(({ id, image, caption }) => (
         <div
-          key={index}
+          key={id}
           className={`${styles.slide} ${
-            index === activeIndex ? styles.active : ""
+            id === activeIndex ? styles.active : ""
           }`}
         >
-          <div className={image}></div>
+          <img className={styles.image} src={image} alt={caption} />
           {caption && (
-            <p className={`${styles.caption} ${caption[index].position}`}>
-              {caption[index].text}
+            <p className={`${styles.caption} ${additionCaptionStyles}`}>
+              {caption}
             </p>
           )}
         </div>
       ))}
-      <div className={styles.dots}>
-        {images.map((_, index) => (
+      <div className={`${styles.dots} ${additionDotsStyles}`}>
+        {images.map(({ id }) => (
           <button
-            key={index}
+            key={id}
             className={`${styles.dot} ${
-              index === activeIndex ? styles.dotActive : ""
+              id === activeIndex ? styles.dotActive : ""
             }`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => setActiveIndex(id)}
           />
         ))}
       </div>

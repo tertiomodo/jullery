@@ -11,35 +11,35 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-Regular.woff2") format("woff2");
+  src: url("./@assets/fonts/Montserrat-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-Medium.woff2") format("woff2");
+  src: url("./@assets/fonts/Montserrat-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-SemiBold.woff2") format("woff2");
+  src: url("./@assets/fonts/Montserrat-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-Bold.woff2") format("woff2");
+  src: url("./@assets/fonts/Montserrat-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-ExtraBold.woff2") format("woff2");
+  src: url("./@assets/fonts/Montserrat-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
 }
@@ -50,11 +50,24 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 1px;
+
+  @media (min-width: 768px) {
+    font-size: 0.07vw;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 1px;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-color: var(--black);
   color: var(--white);
+  text-wrap: balance;
+  background-color: var(--black);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -86,6 +99,16 @@ button {
 a {
   text-decoration: none;
   color: var(--white);
+}
+
+.container {
+  max-width: 1440rem;
+  padding: 0 20rem;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    padding: 0 80rem;
+  }
 }
 
 .removeScroll {
