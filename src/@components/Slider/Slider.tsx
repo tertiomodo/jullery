@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 
+interface Image {
+  id: number;
+  image: string;
+}
+
 interface Props {
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-  images: {
-    id: number;
-    image: string;
-    caption?: string;
-  }[];
+  images: Image[];
   additionStyles?: string;
   additionDotsStyles?: string;
-  additionCaptionStyles?: string;
 }
 
 const Slider: React.FC<Props> = ({
@@ -20,7 +20,6 @@ const Slider: React.FC<Props> = ({
   images,
   additionStyles,
   additionDotsStyles,
-  additionCaptionStyles,
 }) => {
   const [startX, setStartX] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -77,26 +76,21 @@ const Slider: React.FC<Props> = ({
 
   return (
     <div
-      className={`${styles.slider} ${additionStyles}`}
+      className={styles.slider}
       onTouchStart={touchStart}
       onTouchEnd={touchEnd}
       onMouseDown={mouseDown}
       onMouseUp={mouseUp}
       onMouseLeave={mouseUp}
     >
-      {images.map(({ id, image, caption }) => (
+      {images.map(({ id, image }) => (
         <div
           key={id}
-          className={`${styles.slide} ${
+          className={`${styles.slide} ${additionStyles} ${
             id === activeIndex ? styles.active : ""
           }`}
         >
-          <img className={styles.image} src={image} alt={caption} />
-          {caption && (
-            <p className={`${styles.caption} ${additionCaptionStyles}`}>
-              {caption}
-            </p>
-          )}
+          <img className={styles.image} src={image} alt="" draggable="false" />
         </div>
       ))}
       <div className={`${styles.dots} ${additionDotsStyles}`}>
