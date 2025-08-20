@@ -1,36 +1,28 @@
-import { ReactNode } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
   activeIndex: number;
-  children: ReactNode;
   images: {
     id: number;
     image: string;
-    caption?: string;
   }[];
   additionStyles?: string;
 }
 
-const SliderBg: React.FC<Props> = ({
-  activeIndex,
-  children,
-  images,
-  additionStyles,
-}) => {
+const SliderBg: React.FC<Props> = ({ activeIndex, images, additionStyles }) => {
   return (
-    <div className={`${styles.wrapper} ${additionStyles}`}>
-      {images.map(({ id, image, caption }) => (
+    <div className={`${styles.backgroundSlider} ${additionStyles}`}>
+      {images.map(({ id, image }) => (
         <img
           key={id}
+          draggable="false"
           src={image}
-          alt={`${caption} background`}
+          alt=""
           className={`${styles.slide} ${
             id === activeIndex ? styles.active : ""
           }`}
         />
       ))}
-      {children}
     </div>
   );
 };

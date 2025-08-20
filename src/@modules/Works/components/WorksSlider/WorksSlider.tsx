@@ -16,21 +16,36 @@ const WorksSlider: React.FC = () => {
     {
       id: 0,
       image: silenceOfSea,
-      caption: "Silence of sea",
     },
     {
       id: 1,
       image: runnyDay,
-      caption: "Runny day",
     },
     {
       id: 2,
       image: cypressForest,
-      caption: "Cypress forest",
     },
     {
       id: 3,
       image: amazingEvening,
+    },
+  ];
+
+  const captions = [
+    {
+      id: 0,
+      caption: "Silence of sea",
+    },
+    {
+      id: 1,
+      caption: "Runny day",
+    },
+    {
+      id: 2,
+      caption: "Cypress forest",
+    },
+    {
+      id: 3,
       caption: "Amazing evening",
     },
   ];
@@ -41,16 +56,26 @@ const WorksSlider: React.FC = () => {
         activeIndex={activeIndex}
         images={images}
         additionStyles={styles.sliderBg}
-      >
+      />
+      <div className={styles.sliderWrapper}>
         <Slider
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
           images={images}
           additionStyles={styles.slider}
-          additionCaptionStyles={styles.caption}
           additionDotsStyles={styles.dots}
         />
-      </SliderBg>
+        {captions.map(({ id, caption }) => (
+          <p
+            key={id}
+            className={`${styles.caption} ${
+              id === activeIndex ? styles.active : ""
+            }`}
+          >
+            {caption}
+          </p>
+        ))}
+      </div>
     </section>
   );
 };

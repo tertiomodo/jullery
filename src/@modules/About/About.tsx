@@ -5,8 +5,8 @@ const About: React.FC = () => {
   return (
     <section className={styles.about}>
       <div className="container">
+        <h2 className={styles.title}>About me</h2>
         <div className={styles.wrapper}>
-          <h2 className={styles.title}>About me</h2>
           <div className={styles.texts}>
             <p className={styles.text}>
               Hi! My name is Julia, and I decided to create this site about one
@@ -26,7 +26,12 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className={styles.imageWrapper}>
-            <img className={styles.image} src={julia} alt="Julia" />
+            <img
+              className={styles.image}
+              src={julia}
+              alt="Julia"
+              draggable="false"
+            />
           </div>
         </div>
       </div>

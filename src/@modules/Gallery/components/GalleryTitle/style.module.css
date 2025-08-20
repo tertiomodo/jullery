@@ -1,0 +1,25 @@
+.galleryTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  min-height: 170rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 32rem;
+  font-weight: 800;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 64rem;
+  }
+}

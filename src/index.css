@@ -65,6 +65,7 @@ html {
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  font-size: 18rem;
   color: var(--white);
   text-wrap: balance;
   background-color: var(--black);
@@ -103,6 +104,7 @@ a {
 
 .container {
   max-width: 1440rem;
+  width: 100%;
   padding: 0 20rem;
   margin: 0 auto;
 

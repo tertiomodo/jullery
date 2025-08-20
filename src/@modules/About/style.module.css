@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   min-width: 320rem;
-  min-height: 500rem;
+  min-height: 750rem;
 }
 
 .wrapper {
@@ -26,7 +26,7 @@
 
 .text {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 16rem;
   line-height: 100%;
 }
 
@@ -50,8 +50,45 @@
   width: 677rem;
 }
 
+@media (max-height: 700px) {
+  .about {
+    min-height: 620rem;
+  }
+
+  .imageWrapper {
+    height: 320rem;
+  }
+
+  .image {
+    top: -63rem;
+  }
+}
+
 @media (min-width: 768px) {
-  .texts {
-    margin-bottom: 27rem;
+  .wrapper {
+    flex-direction: row-reverse;
+    gap: 50rem;
+  }
+
+  .title {
+    margin-bottom: 40rem;
+    font-size: 64rem;
+  }
+
+  .text {
+    font-size: 32rem;
+    line-height: 107%;
+  }
+
+  .imageWrapper {
+    max-width: 500rem;
+    height: 500rem;
+    border-radius: 30rem;
+  }
+
+  .image {
+    top: -59rem;
+    left: -94rem;
+    width: 839rem;
   }
 }

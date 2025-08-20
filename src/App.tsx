@@ -3,6 +3,7 @@ import Welcome from "@modules/Welcome/Welcome";
 import Footer from "@modules/Footer/Footer";
 import Works from "@modules/Works/Works";
 import About from "@modules/About/About";
+import Gallery from "@modules/Gallery/Gallery";
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <Welcome />
         <Works />
         <About />
+        <Gallery />
       </main>
       <Footer />
     </>
