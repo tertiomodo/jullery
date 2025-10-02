@@ -32,7 +32,6 @@ const About: React.FC = () => {
                 src={julia}
                 alt="Julia"
                 draggable="false"
-                loading="lazy"
               />
             </div>
           </div>

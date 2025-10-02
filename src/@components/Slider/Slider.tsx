@@ -90,13 +90,7 @@ const Slider: React.FC<Props> = ({
             id === activeIndex ? styles.active : ""
           }`}
         >
-          <img
-            className={styles.image}
-            src={image}
-            alt=""
-            draggable="false"
-            loading="lazy"
-          />
+          <img className={styles.image} src={image} alt="" draggable="false" />
         </div>
       ))}
       <div className={`${styles.dots} ${additionDotsStyles}`}>
