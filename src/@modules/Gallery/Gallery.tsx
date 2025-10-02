@@ -1,18 +1,18 @@
 import GalleryTitle from "./components/GalleryTitle/GalleryTitle";
 import GallerySection from "./components/GallerySection/GallerySection";
-import { getContent } from "./content/getContent";
-
-const content = getContent();
+import { content } from "./content/getContent";
 
 const Gallery: React.FC = () => {
   return (
     <>
       <GalleryTitle />
-      {content.map((item) => (
+      {content.map(({ contentId, images, text, sliderPosition }) => (
         <GallerySection
-          key={item.contentId}
-          images={item.images}
-          text={item.text}
+          sectionId={contentId}
+          key={contentId}
+          images={images}
+          text={text}
+          sliderPosition={sliderPosition}
         />
       ))}
     </>
