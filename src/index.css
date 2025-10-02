@@ -1,11 +1,13 @@
 :root {
   --white: #fff;
   --black: #000;
-  --text-highlight: linear-gradient(
+  --gradient: linear-gradient(
     90deg,
-    #66d45d 0%,
-    #b7e359 49%,
-    #ebba5b 100%
+    #66d45d,
+    #b7e359,
+    #ebba5b,
+    #b7e359,
+    #66d45d
   );
 }
 
@@ -117,8 +119,39 @@ a {
   overflow: hidden;
 }
 
+@keyframes gradientFlow {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 .highlight {
-  background: var(--text-highlight);
+  animation: gradientFlow 4s linear infinite;
+  background: var(--gradient);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.sectionAnimation {
+  opacity: 0;
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+[data-section]:nth-child(odd) .sectionAnimation {
+  transform: translateX(-50%);
+}
+
+[data-section]:nth-child(even) .sectionAnimation {
+  transform: translateX(50%);
+}
+
+[data-section].visible .sectionAnimation {
+  opacity: 1;
+  transform: translateX(0);
 }
