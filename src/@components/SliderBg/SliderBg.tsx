@@ -21,7 +21,6 @@ const SliderBg: React.FC<Props> = ({ activeIndex, images, additionStyles }) => {
           className={`${styles.slide} ${
             id === activeIndex ? styles.active : ""
           }`}
-          loading="lazy"
         />
       ))}
     </div>
