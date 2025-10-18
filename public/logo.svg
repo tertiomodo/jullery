@@ -1,7 +1,12 @@
-<svg width="948" height="807" viewBox="0 0 948 807" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M474.073 742.973C303.164 571.923 323.448 158.586 474.073 7.83777C632.349 166.246 639.668 577.24 474.073 742.973Z" fill="black" stroke="white" stroke-width="14" stroke-linejoin="round"/>
-<path d="M473.53 745.36C264.137 624.103 177.272 219.372 284.139 34.8329C478.055 147.128 591.018 542.477 473.53 745.36Z" fill="black" stroke="white" stroke-width="14" stroke-linejoin="round"/>
-<path d="M473.963 745.36C683.356 624.103 770.221 219.372 663.355 34.8329C469.438 147.128 356.475 542.477 473.963 745.36Z" fill="black" stroke="white" stroke-width="14" stroke-linejoin="round"/>
-<path d="M473.253 746.539C239.529 683.914 50.3914 315.702 105.586 109.72C322.035 167.717 533.932 520.082 473.253 746.539Z" fill="black" stroke="white" stroke-width="14" stroke-linejoin="round"/>
-<path d="M474.235 746.152C411.608 512.428 635.919 164.525 841.902 109.333C899.899 325.782 700.692 685.473 474.235 746.152Z" fill="black" stroke="white" stroke-width="14" stroke-linejoin="round"/>
+<svg width="448" height="438" viewBox="0 0 448 438" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_2766_2822" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="448" height="438">
+<rect x="0.814453" y="0.897949" width="446.66" height="436.808" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_2766_2822)">
+<path d="M224.158 423.805C128.613 328.181 139.953 97.1094 224.158 12.8354C312.64 101.392 316.732 331.153 224.158 423.805Z" fill="black" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+<path d="M223.854 425.139C106.795 357.352 58.2342 131.091 117.977 27.9267C226.384 90.7041 289.534 311.719 223.854 425.139Z" fill="black" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+<path d="M224.096 425.139C341.155 357.352 389.716 131.091 329.973 27.9267C221.567 90.7041 158.416 311.719 224.096 425.139Z" fill="black" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+<path d="M223.7 425.798C93.0389 390.788 -12.6966 184.944 18.1592 69.7916C139.162 102.214 257.621 299.2 223.7 425.798Z" fill="black" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+<path d="M224.249 425.582C189.238 294.921 314.636 100.429 429.789 69.5751C462.212 190.578 350.847 391.66 224.249 425.582Z" fill="black" stroke="white" stroke-width="22" stroke-linejoin="round"/>
+</g>
 </svg>
