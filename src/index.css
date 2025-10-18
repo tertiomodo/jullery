@@ -70,6 +70,7 @@ body {
   font-size: 18rem;
   color: var(--white);
   text-wrap: balance;
+  overflow: hidden;
   background-color: var(--black);
   -webkit-tap-highlight-color: transparent;
 }
@@ -115,10 +116,6 @@ a {
   }
 }
 
-.removeScroll {
-  overflow: hidden;
-}
-
 @keyframes gradientFlow {
   0% {
     background-position: 100% 0;
@@ -138,20 +135,42 @@ a {
   color: transparent;
 }
 
+@keyframes inOutTop {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes inOutBottom {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
 .sectionAnimation {
-  opacity: 0;
-  transition: opacity 400ms ease-out, transform 400ms ease-out;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  transition: opacity ease-in-out 300ms;
+  pointer-events: none;
 }
 
-[data-section]:nth-child(odd) .sectionAnimation {
-  transform: translateX(-50%);
+.inTop {
+  animation-name: inOutTop;
+  animation-direction: alternate-reverse;
 }
 
-[data-section]:nth-child(even) .sectionAnimation {
-  transform: translateX(50%);
+.inBottom {
+  animation-name: inOutBottom;
+  animation-direction: alternate-reverse;
 }
 
-[data-section].visible .sectionAnimation {
+.activeSection {
   opacity: 1;
-  transform: translateX(0);
+  pointer-events: all;
 }

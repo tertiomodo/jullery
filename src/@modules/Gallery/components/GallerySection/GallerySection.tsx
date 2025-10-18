@@ -56,45 +56,42 @@ const GallerySection: React.FC<Props> = ({
   }, []);
 
   return (
-    <section data-section={sectionId} className={styles.gallerySection}>
-      <div className={`${styles.sectionWrapper} sectionAnimation`}>
-        <SliderBg
-          activeIndex={activeIndex}
-          images={images}
-          additionStyles={styles.sliderBg}
-        />
-        <div className={styles.wrapper}>
-          <div className={`${styles.content} ${styles[sliderPosition]}`}>
-            <div className={styles.textWrapper}>
-              <div
-                className={`${styles.textBg} ${popup ? styles.active : ""}`}
-                style={{ height: popup ? popupHeight : "" }}
-                onClick={clickHandler}
-              >
-                <div
-                  className={`${styles.plus} ${popup ? styles.active : ""}`}
-                />
-              </div>
-              <p
-                ref={textElement}
-                className={`${styles.text} ${popup ? styles.active : ""}`}
-              >
-                {text}
-              </p>
-            </div>
+    <section
+      data-section={sectionId}
+      className={`${styles.gallerySection} sectionAnimation`}
+    >
+      <SliderBg
+        activeIndex={activeIndex}
+        images={images}
+        additionStyles={styles.sliderBg}
+      />
+      <div className={styles.wrapper}>
+        <div className={`${styles.content} ${styles[sliderPosition]}`}>
+          <div className={styles.textWrapper}>
             <div
-              className={`${styles.sliderWrapper} ${
-                popup ? styles.active : ""
-              }`}
+              className={`${styles.textBg} ${popup ? styles.active : ""}`}
+              style={{ height: popup ? popupHeight : "" }}
+              onClick={clickHandler}
             >
-              <Slider
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-                images={images}
-                additionStyles={styles.slider}
-                additionDotsStyles={styles.dots}
-              />
+              <div className={`${styles.plus} ${popup ? styles.active : ""}`} />
             </div>
+            <p
+              ref={textElement}
+              className={`${styles.text} ${popup ? styles.active : ""}`}
+            >
+              {text}
+            </p>
+          </div>
+          <div
+            className={`${styles.sliderWrapper} ${popup ? styles.active : ""}`}
+          >
+            <Slider
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+              images={images}
+              additionStyles={styles.slider}
+              additionDotsStyles={styles.dots}
+            />
           </div>
         </div>
       </div>

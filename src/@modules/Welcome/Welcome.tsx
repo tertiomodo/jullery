@@ -2,7 +2,10 @@ import styles from "./style.module.css";
 
 const Hero: React.FC = () => {
   return (
-    <section className={styles.welcome}>
+    <section
+      data-section="welcome"
+      className={`${styles.welcome} sectionAnimation activeSection`}
+    >
       <div className={styles.backgroundWrapper}>
         <div className={styles.background}></div>
       </div>

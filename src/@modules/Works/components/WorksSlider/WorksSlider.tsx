@@ -3,7 +3,7 @@ import SliderBg from "@components/SliderBg/SliderBg";
 import Slider from "@components/Slider/Slider";
 
 import silenceOfSea from "./img/silence-of-sea.jpg";
-import runnyDay from "./img/runny-day.jpg";
+import rainyDay from "./img/rainy-day.jpg";
 import cypressForest from "./img/cypress-forest.jpg";
 import amazingEvening from "./img/amazing-evening.jpg";
 
@@ -16,7 +16,7 @@ const images = [
   },
   {
     id: 1,
-    image: runnyDay,
+    image: rainyDay,
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const captions = [
   },
   {
     id: 1,
-    caption: "Runny day",
+    caption: "Rainy day",
   },
   {
     id: 2,
@@ -51,32 +51,33 @@ const WorksSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <section data-section="worksSlider" className={styles.worksSlider}>
-      <div className={`${styles.sectionWrapper} sectionAnimation`}>
-        <SliderBg
+    <section
+      data-section="worksSlider"
+      className={`${styles.worksSlider} sectionAnimation`}
+    >
+      <SliderBg
+        activeIndex={activeIndex}
+        images={images}
+        additionStyles={styles.sliderBg}
+      />
+      <div className={styles.sliderWrapper}>
+        <Slider
           activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
           images={images}
-          additionStyles={styles.sliderBg}
+          additionStyles={styles.slider}
+          additionDotsStyles={styles.dots}
         />
-        <div className={styles.sliderWrapper}>
-          <Slider
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-            images={images}
-            additionStyles={styles.slider}
-            additionDotsStyles={styles.dots}
-          />
-          {captions.map(({ id, caption }) => (
-            <p
-              key={id}
-              className={`${styles.caption} ${
-                id === activeIndex ? styles.active : ""
-              }`}
-            >
-              {caption}
-            </p>
-          ))}
-        </div>
+        {captions.map(({ id, caption }) => (
+          <p
+            key={id}
+            className={`${styles.caption} ${
+              id === activeIndex ? styles.active : ""
+            }`}
+          >
+            {caption}
+          </p>
+        ))}
       </div>
     </section>
   );
