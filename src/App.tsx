@@ -9,15 +9,24 @@ import { useRefresh } from "@hooks/useRefresh";
 import { useSectionAnimation } from "@hooks/useSectionAnimation";
 
 const App: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [sectionID, setSectionID] = useState<number>(0);
   const [isMenuClick, setIsMenuClick] = useState<boolean>(false);
 
   useRefresh();
-  useSectionAnimation({ isMenuClick, setIsMenuClick, sectionID, setSectionID });
+  useSectionAnimation({
+    menuOpen,
+    isMenuClick,
+    setIsMenuClick,
+    sectionID,
+    setSectionID,
+  });
 
   return (
     <>
       <Header
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
         setIsMenuClick={setIsMenuClick}
         setSectionID={setSectionID}
         sectionID={sectionID}

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 interface Props {
+  menuOpen: boolean;
   isMenuClick: boolean;
   setIsMenuClick: React.Dispatch<React.SetStateAction<boolean>>;
   sectionID: number;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export const useSectionAnimation = ({
+  menuOpen,
   isMenuClick,
   setIsMenuClick,
   sectionID,
@@ -60,45 +62,49 @@ export const useSectionAnimation = ({
     }
 
     function scrollHandler(e: WheelEvent) {
-      clearTimeout(scrollTimeout.current);
+      if (!menuOpen) {
+        clearTimeout(scrollTimeout.current);
 
-      if (!isScrolling.current) {
-        if (e.deltaY < 0) {
-          descreaseID();
-        } else {
-          increaseID();
+        if (!isScrolling.current) {
+          if (e.deltaY < 0) {
+            descreaseID();
+          } else {
+            increaseID();
+          }
+
+          isScrolling.current = true;
         }
 
-        isScrolling.current = true;
+        clearTimeout(scrollTimeout.current);
+        scrollTimeout.current = setTimeout(() => {
+          isScrolling.current = false;
+        }, 70);
       }
-
-      clearTimeout(scrollTimeout.current);
-      scrollTimeout.current = setTimeout(() => {
-        isScrolling.current = false;
-      }, 70);
     }
 
     let touchStartY = 0;
     let touchEndY = 0;
 
     function swipeHandler() {
-      const diffY = touchEndY - touchStartY;
-      const minSwipeDistance = 50;
+      if (!menuOpen) {
+        const diffY = touchEndY - touchStartY;
+        const minSwipeDistance = 50;
 
-      if (Math.abs(diffY) > minSwipeDistance && !isSwiping.current) {
-        if (diffY > 0) {
-          descreaseID();
-        } else {
-          increaseID();
+        if (Math.abs(diffY) > minSwipeDistance && !isSwiping.current) {
+          if (diffY > 0) {
+            descreaseID();
+          } else {
+            increaseID();
+          }
+
+          isSwiping.current = true;
         }
 
-        isSwiping.current = true;
+        clearTimeout(swipeTimeout.current);
+        swipeTimeout.current = setTimeout(() => {
+          isSwiping.current = false;
+        }, 500);
       }
-
-      clearTimeout(swipeTimeout.current);
-      swipeTimeout.current = setTimeout(() => {
-        isSwiping.current = false;
-      }, 500);
     }
 
     function touchStartHandler(e: TouchEvent) {
@@ -119,5 +125,5 @@ export const useSectionAnimation = ({
       document.removeEventListener("touchstart", touchStartHandler);
       document.removeEventListener("touchend", touchEndHandler);
     };
-  }, [sectionID]);
+  }, [sectionID, menuOpen, isMenuClick]);
 };
