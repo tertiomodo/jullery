@@ -1,18 +1,21 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./style.module.css";
 
 interface ChildProps {
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSectionID: React.Dispatch<React.SetStateAction<number>>;
   setIsMenuClick: React.Dispatch<React.SetStateAction<boolean>>;
   sectionID: number;
 }
 
 const Header: React.FC<ChildProps> = ({
+  menuOpen,
+  setMenuOpen,
   setSectionID,
   setIsMenuClick,
   sectionID,
 }) => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const burger = useRef<HTMLButtonElement>(null);
   const headerTriggerSections = [
     "gallery0",
