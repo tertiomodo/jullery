@@ -25,7 +25,7 @@ const About: React.FC = () => {
             </p>
             <p className={styles.text}>
               I enjoy finding unusual scenes and angles, and I especially love
-              photographing cityscapes and nature.
+              photographing cityscapes and nature
             </p>
           </div>
           <div className={styles.imageWrapper}>

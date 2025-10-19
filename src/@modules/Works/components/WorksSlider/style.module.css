@@ -21,7 +21,6 @@
 
 .sliderBg {
   min-height: 610rem;
-  filter: blur(5px);
 }
 
 .sliderWrapper {

@@ -64,6 +64,7 @@ const GallerySection: React.FC<Props> = ({
         activeIndex={activeIndex}
         images={images}
         additionStyles={styles.sliderBg}
+        isBlur
       />
       <div className={styles.wrapper}>
         <div className={`${styles.content} ${styles[sliderPosition]}`}>

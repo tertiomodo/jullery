@@ -48,7 +48,7 @@ export const content: Props[] = [
         image: img3,
       },
     ],
-    text: "In the golden glow of the sunset, the rocks and forests merge into a single living organism. The panorama that opens up from such a height awakens a feeling of unity with the world and delight in its beauty.",
+    text: "In the golden glow of the sunset, the rocks and forests merge into a single living organism. The panorama that opens up from such a height awakens a feeling of unity with the world",
     sliderPosition: "right",
   },
   {
@@ -71,7 +71,7 @@ export const content: Props[] = [
         image: img7,
       },
     ],
-    text: "The soft autumn glow fills every detail of the forest with warmth and calm. The atmosphere of quiet solitude and closeness to nature awakens a feeling of harmony and peace, bringing a gentle nostalgia and thoughtfulness.",
+    text: "The soft autumn glow fills every detail of the forest with warmth and calm. The atmosphere of quiet solitude and closeness to nature awakens a feeling of harmony and peace, bringing a gentle nostalgia and thoughtfulness",
     sliderPosition: "left",
   },
   {
@@ -94,7 +94,7 @@ export const content: Props[] = [
         image: img11,
       },
     ],
-    text: "The gentle power of touches and subtle details brings back a sense of connection to the moment.",
+    text: "The gentle power of touches and subtle details brings back a sense of connection to the moment",
     sliderPosition: "right",
   },
   {
@@ -117,7 +117,7 @@ export const content: Props[] = [
         image: img15,
       },
     ],
-    text: "The vastness of the mountains, wrapped in silence, seems to pause under heavy clouds. In these images, one can feel the grandeur of nature and a silent strength that conveys peace and admiration.",
+    text: "The vastness of the mountains, wrapped in silence, seems to pause under heavy clouds. In these images, one can feel the grandeur of nature and a silent strength that conveys peace and admiration",
     sliderPosition: "left",
   },
 ];

@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
             <h2 className={styles.title}>Contacts</h2>
             <p className={styles.description}>
               Here is my contact info, so, if you like my works you always can
-              follow me.
+              follow me
             </p>
             <div className={styles.socials}>
               <a
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
               <span className="highlight">tertiomodo</span>
             </a>
             <p className={styles.copyright}>
-              © {new Date().getFullYear()} Jullery. All rights reserved.
+              © {new Date().getFullYear()} Jullery. All rights reserved
             </p>
           </div>
         </div>

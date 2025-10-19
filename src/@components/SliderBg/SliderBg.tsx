@@ -7,9 +7,15 @@ interface Props {
     image: string;
   }[];
   additionStyles?: string;
+  isBlur?: boolean;
 }
 
-const SliderBg: React.FC<Props> = ({ activeIndex, images, additionStyles }) => {
+const SliderBg: React.FC<Props> = ({
+  activeIndex,
+  images,
+  additionStyles,
+  isBlur,
+}) => {
   return (
     <div className={`${styles.backgroundSlider} ${additionStyles}`}>
       {images.map(({ id, image }) => (
@@ -23,6 +29,7 @@ const SliderBg: React.FC<Props> = ({ activeIndex, images, additionStyles }) => {
           }`}
         />
       ))}
+      {isBlur && <div className={styles.blur}></div>}
     </div>
   );
 };

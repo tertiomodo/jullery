@@ -59,6 +59,7 @@ const WorksSlider: React.FC = () => {
         activeIndex={activeIndex}
         images={images}
         additionStyles={styles.sliderBg}
+        isBlur
       />
       <div className={styles.sliderWrapper}>
         <Slider

@@ -15,14 +15,15 @@ export const useSectionAnimation = ({
 }: Props) => {
   const scrollDirection = useRef<string | "up" | "down">("");
   const isScrolling = useRef<boolean>(false);
-  const wheelTimeout = useRef<NodeJS.Timeout>();
+  const scrollTimeout = useRef<NodeJS.Timeout>();
+  const isSwiping = useRef<boolean>(false);
+  const swipeTimeout = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-section]");
 
     function setActiveSection() {
-      sections.forEach((s) => {
-        const section = s as HTMLElement;
+      sections.forEach((section) => {
         section.classList.remove("activeSection");
         section.classList.remove("inTop");
         section.classList.remove("inBottom");
@@ -59,7 +60,7 @@ export const useSectionAnimation = ({
     }
 
     function scrollHandler(e: WheelEvent) {
-      clearTimeout(wheelTimeout.current);
+      clearTimeout(scrollTimeout.current);
 
       if (!isScrolling.current) {
         if (e.deltaY < 0) {
@@ -67,11 +68,12 @@ export const useSectionAnimation = ({
         } else {
           increaseID();
         }
+
         isScrolling.current = true;
       }
 
-      clearTimeout(wheelTimeout.current);
-      wheelTimeout.current = setTimeout(() => {
+      clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
         isScrolling.current = false;
       }, 70);
     }
@@ -79,17 +81,24 @@ export const useSectionAnimation = ({
     let touchStartY = 0;
     let touchEndY = 0;
 
-    function handleVerticalSwipe() {
+    function swipeHandler() {
       const diffY = touchEndY - touchStartY;
       const minSwipeDistance = 50;
 
-      if (Math.abs(diffY) > minSwipeDistance) {
+      if (Math.abs(diffY) > minSwipeDistance && !isSwiping.current) {
         if (diffY > 0) {
           descreaseID();
         } else {
           increaseID();
         }
+
+        isSwiping.current = true;
       }
+
+      clearTimeout(swipeTimeout.current);
+      swipeTimeout.current = setTimeout(() => {
+        isSwiping.current = false;
+      }, 500);
     }
 
     function touchStartHandler(e: TouchEvent) {
@@ -98,7 +107,7 @@ export const useSectionAnimation = ({
 
     function touchEndHandler(e: TouchEvent) {
       touchEndY = e.changedTouches[0].screenY;
-      handleVerticalSwipe();
+      swipeHandler();
     }
 
     document.addEventListener("wheel", scrollHandler, { passive: true });

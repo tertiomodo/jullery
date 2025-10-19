@@ -6,8 +6,9 @@
   width: 100%;
   height: 100vh;
   min-width: 320rem;
-  min-height: 750rem;
+  min-height: 630rem;
   overflow: hidden;
+  background-color: var(--black);
   transform: translateY(0%);
   opacity: 0;
 }
@@ -60,11 +61,7 @@
   width: 677rem;
 }
 
-@media (max-height: 700px) {
-  .about {
-    min-height: 620rem;
-  }
-
+@media (max-height: 760px) {
   .imageWrapper {
     height: 320rem;
   }
