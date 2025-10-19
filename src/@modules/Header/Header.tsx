@@ -13,22 +13,14 @@ const Header: React.FC<ChildProps> = ({
   sectionID,
 }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [scrollID, setScrollID] = useState<string>("");
-  const header = useRef<HTMLElement>(null);
-  const hideHeaderSections = ["gallery0", "gallery1", "gallery2", "gallery3"];
-
-  useEffect(() => {
-    const sections = document.querySelectorAll("[data-section]");
-
-    sections.forEach((s, index) => {
-      const section = s as HTMLElement;
-      const sectionName = section.dataset.section as string;
-
-      if (sectionName === scrollID) {
-        setSectionID(index);
-      }
-    });
-  }, [scrollID]);
+  const burger = useRef<HTMLButtonElement>(null);
+  const headerTriggerSections = [
+    "gallery0",
+    "gallery1",
+    "gallery2",
+    "gallery3",
+    "footer",
+  ];
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-section]");
@@ -36,13 +28,13 @@ const Header: React.FC<ChildProps> = ({
     const sectionName = section.dataset.section as string;
     const condition =
       section.classList.contains("activeSection") &&
-      hideHeaderSections.includes(sectionName) &&
+      headerTriggerSections.includes(sectionName) &&
       window.innerWidth < 768;
 
     if (condition) {
-      header.current?.classList.add(styles.hide);
+      burger.current?.classList.add(styles.alignLeft);
     } else {
-      header.current?.classList.remove(styles.hide);
+      burger.current?.classList.remove(styles.alignLeft);
     }
   }, [sectionID]);
 
@@ -54,31 +46,22 @@ const Header: React.FC<ChildProps> = ({
     setMenuOpen(false);
 
     const target = e.target as HTMLElement;
-    const scrollDataID = target.dataset.scrollTo as string;
+    const sectionIndex = Number(target.dataset.scrollTo) as number;
 
-    setScrollID(scrollDataID);
+    setSectionID(sectionIndex);
     setIsMenuClick(true);
   };
 
   const itemsData = [
-    { id: "worksTitle", text: "Lovely works" },
-    { id: "about", text: "About" },
-    { id: "galleryTitle", text: "Gallery" },
-    { id: "footer", text: "Contacts" },
+    { id: 1, text: "Lovely works" },
+    { id: 3, text: "About" },
+    { id: 4, text: "Gallery" },
+    { id: 9, text: "Contacts" },
   ];
 
   return (
-    <header
-      ref={header}
-      className={`${styles.header} ${menuOpen ? styles.navActive : ""}`}
-    >
+    <header className={`${styles.header} ${menuOpen ? styles.navActive : ""}`}>
       <div className={styles.wrapper}>
-        <img
-          onClick={() => setMenuOpen(false)}
-          className={styles.logo}
-          src="./logo.svg"
-          alt="Logo"
-        />
         <ul className={styles.list}>
           {itemsData.map(({ text, id }) => (
             <li
@@ -91,7 +74,7 @@ const Header: React.FC<ChildProps> = ({
             </li>
           ))}
         </ul>
-        <button onClick={menuHandler} className={styles.burger}>
+        <button ref={burger} onClick={menuHandler} className={styles.burger}>
           <span className={styles.burgerLine}></span>
           <span className={styles.burgerLine}></span>
           <span className={styles.burgerLine}></span>

@@ -7,6 +7,7 @@
   height: 100vh;
   min-height: 170rem;
   overflow: hidden;
+  background-color: var(--black);
   transform: translateY(0%);
   opacity: 0;
 }

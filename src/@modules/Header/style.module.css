@@ -1,7 +1,6 @@
 .header {
-  position: relative;
-  z-index: 2;
-  margin-bottom: -70rem;
+  position: absolute;
+  width: 100%;
   pointer-events: all;
   opacity: 1;
   transition: opacity ease-in-out 300ms;
@@ -10,19 +9,12 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   max-width: 1440rem;
   min-width: 320rem;
-  height: 70rem;
+  min-height: 58rem;
   margin: 0 auto;
-  padding: 0 20rem;
-}
-
-.logo {
-  position: relative;
-  z-index: 1;
-  width: 50rem;
-  height: 50rem;
+  padding: 40rem 30rem 0;
 }
 
 .list {
@@ -32,6 +24,7 @@
   align-items: center;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   height: 100vh;
   min-width: 320rem;
@@ -53,18 +46,20 @@
 }
 
 .burger {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 1;
-  width: 30rem;
-  height: 23rem;
+  left: 86%;
+  z-index: 2;
+  width: 22rem;
+  height: 17rem;
+  transition: left 300ms ease-in-out;
 }
 
 .burgerLine {
   width: 100%;
-  height: 3rem;
+  height: 2.5rem;
   background-color: var(--white);
   border-radius: 5rem;
   transition: transform 200ms linear;
@@ -75,7 +70,7 @@
 }
 
 .navActive .burgerLine:first-child {
-  transform: translateY(10rem) rotate(45deg);
+  transform: translateY(7.5rem) rotate(45deg);
 }
 
 .navActive .burgerLine:nth-child(2) {
@@ -83,17 +78,17 @@
 }
 
 .navActive .burgerLine:last-child {
-  transform: translateY(-10rem) rotate(-45deg);
+  transform: translateY(-7rem) rotate(-45deg);
 }
 
-.hide {
-  opacity: 0;
-  pointer-events: none;
+.alignLeft {
+  left: 8%;
 }
 
 @media (min-width: 768px) {
   .wrapper {
-    padding: 0 80rem;
+    justify-content: center;
+    padding: 10rem 80rem 0;
   }
 
   .list {

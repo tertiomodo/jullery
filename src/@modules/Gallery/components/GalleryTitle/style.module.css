@@ -6,6 +6,7 @@
   height: 100vh;
   width: 100%;
   min-height: 170rem;
+  background-color: var(--black);
   transform: translateY(0%);
   opacity: 0;
 }
