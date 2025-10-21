@@ -70,6 +70,7 @@
   .caption {
     top: auto;
     padding-top: 12rem;
+    font-size: 30rem;
   }
 
   .dots.dots {
@@ -82,5 +83,6 @@
     bottom: 13rem;
     left: 33rem;
     padding-top: 0;
+    font-size: 20rem;
   }
 }

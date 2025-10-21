@@ -32,7 +32,7 @@ const Header: React.FC<ChildProps> = ({
     const condition =
       section.classList.contains("activeSection") &&
       headerTriggerSections.includes(sectionName) &&
-      window.innerWidth < 768;
+      window.innerWidth < 1024;
 
     if (condition) {
       burger.current?.classList.add(styles.alignLeft);

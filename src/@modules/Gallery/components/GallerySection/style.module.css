@@ -130,13 +130,17 @@
     min-height: 970rem;
   }
 
+  .textWrapper {
+    padding: 30rem 30rem 30rem 120rem;
+  }
+
   .textBg {
     padding: 30rem;
     border-radius: 30rem;
   }
 
   .text {
-    padding: 30rem 45rem 30rem 60rem;
+    padding: 30rem 45rem 30rem 150rem;
     font-size: 30rem;
   }
 
@@ -149,6 +153,10 @@
 
   .dots.dots {
     bottom: 3%;
+  }
+
+  .active.textBg {
+    padding: 20rem 60rem 20rem 20rem;
   }
 }
 
