@@ -66,7 +66,8 @@
 
 .text {
   position: absolute;
-  padding: 20rem 45rem 20rem 90rem;
+  left: 0;
+  padding: 20rem 70rem 20rem 90rem;
   font-weight: 400;
   font-size: 17rem;
   pointer-events: none;
@@ -140,7 +141,7 @@
   }
 
   .text {
-    padding: 30rem 45rem 30rem 150rem;
+    padding: 30rem 95rem 30rem 150rem;
     font-size: 30rem;
   }
 
