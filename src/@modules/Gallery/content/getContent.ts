@@ -71,7 +71,7 @@ export const content: Props[] = [
         image: img7,
       },
     ],
-    text: "The soft autumn glow fills every detail of the forest with warmth and calm. The atmosphere of quiet solitude and closeness to nature awakens a feeling of harmony and peace, bringing a gentle nostalgia and thoughtfulness",
+    text: "The soft autumn glow warms the forest, filling it with calm and quiet solitude that evokes harmony, peace, and gentle nostalgia.",
     sliderPosition: "left",
   },
   {
