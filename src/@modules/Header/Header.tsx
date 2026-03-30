@@ -56,7 +56,7 @@ const Header: React.FC<ChildProps> = ({
   };
 
   const itemsData = [
-    { id: 1, text: "Lovely works" },
+    { id: 1, text: "Favorite works" },
     { id: 3, text: "About" },
     { id: 4, text: "Gallery" },
     { id: 9, text: "Contacts" },
